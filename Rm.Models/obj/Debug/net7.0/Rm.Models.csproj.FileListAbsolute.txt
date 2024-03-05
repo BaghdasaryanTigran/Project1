@@ -1,0 +1,14 @@
+D:\Rm.Api\Rm.Models\bin\Debug\net7.0\Rm.Models.deps.json
+D:\Rm.Api\Rm.Models\bin\Debug\net7.0\Rm.Models.dll
+D:\Rm.Api\Rm.Models\bin\Debug\net7.0\Rm.Models.pdb
+D:\Rm.Api\Rm.Models\obj\Debug\net7.0\Rm.Models.csproj.AssemblyReference.cache
+D:\Rm.Api\Rm.Models\obj\Debug\net7.0\Rm.Models.GeneratedMSBuildEditorConfig.editorconfig
+D:\Rm.Api\Rm.Models\obj\Debug\net7.0\Rm.Models.AssemblyInfoInputs.cache
+D:\Rm.Api\Rm.Models\obj\Debug\net7.0\Rm.Models.AssemblyInfo.cs
+D:\Rm.Api\Rm.Models\obj\Debug\net7.0\Rm.Models.csproj.CoreCompileInputs.cache
+D:\Rm.Api\Rm.Models\obj\Debug\net7.0\Rm.Models.dll
+D:\Rm.Api\Rm.Models\obj\Debug\net7.0\refint\Rm.Models.dll
+D:\Rm.Api\Rm.Models\obj\Debug\net7.0\Rm.Models.pdb
+D:\Rm.Api\Rm.Models\obj\Debug\net7.0\ref\Rm.Models.dll
+D:\Rm.Api\Rm.Models\bin\Debug\net7.0\Rm.Models.runtimeconfig.json
+D:\Rm.Api\Rm.Models\obj\Debug\net7.0\Rm.Models.genruntimeconfig.cache
