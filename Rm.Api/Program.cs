@@ -47,7 +47,7 @@ builder.Services.AddScoped<IWorkerService, WorkerService>();
 builder.Services.AddScoped<IDocumentService, DocumentService>();
 builder.Services.Configure<KestrelServerOptions>(options =>
 {
-    options.Limits.MaxRequestLineSize = 1024 * 1024; // Increase the limit as needed
+    options.Limits.MaxRequestLineSize = 1024 * 1024; 
 });
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

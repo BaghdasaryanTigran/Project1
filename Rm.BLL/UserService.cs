@@ -5,6 +5,9 @@ using Rm.DAL.Context;
 using Rm.Model.Models;
 using System.Security.Cryptography;
 using System.Text;
+using System.IO.Compression;
+
+
 namespace Rm.BLL
 {
     public class UserService : IUserService
@@ -15,6 +18,7 @@ namespace Rm.BLL
             Context = context;
            
         }
+        
         public string HashPassword(string password )
         {
             using (SHA256 sha256 = SHA256.Create())
@@ -79,8 +83,13 @@ namespace Rm.BLL
         public async Task<bool> UploadImage(int userId, IFormFile image)
         {
             var user = Context.Users.FirstOrDefault(x => x.Id == userId);   
+            if(IsUserExistById(userId) || user.ImagePath != null) 
+            {
+                return false;
+            }
             string fileName = $"Img{userId}.jpg";
             string path = Path.Combine($"D:\\Rem\\Images" , fileName) ;
+            user.ImagePath = path ;
             using (var stream = new FileStream(path, FileMode.Create))
             {
                await image.CopyToAsync(stream);
@@ -101,6 +110,7 @@ namespace Rm.BLL
             var imageType = GetContentType(user.ImagePath);
             return (imageBytes,imageType);
         }
+
         private string GetContentType(string imagePath)
         {
             
@@ -117,17 +127,80 @@ namespace Rm.BLL
             }
 
         }
-        public string UploadBase64(IFormFile file)
+     
+      
+        ////////////////////////////////////////////////////////////////////////////////
+        
+    
+        public async Task<bool> UploadImageBase64(int userId,IFormFile file)
         {
-            
+            var user = Context.Users.FirstOrDefault(x => x.Id == userId);
+            if (IsUserExistById(userId) == false || user.ImageByte != null)
+            {
+                return false;
+            }
 
             using (MemoryStream memoryStream = new MemoryStream())
             {
-                file.CopyTo(memoryStream);
+                await file.CopyToAsync(memoryStream);
+                //string base64 = Convert.ToBase64String(memoryStream.ToArray());
                 byte[] bytes = memoryStream.ToArray();
-                string base64String = Convert.ToBase64String(bytes);
-                return base64String;
+                user.ImageByte = bytes;
+                await Context.SaveChangesAsync();
+
+                return true;
             }
+        }
+
+       
+        public (byte[],string) GetImage64(int userId)
+        {
+
+            var user = Context.Users.FirstOrDefault(x => x.Id == userId);
+            if (user.ImageByte == null)
+            {
+                throw new InvalidDataException("User image is missing");
+            }
+
+           
+            //string base64  = Convert.ToBase64String(user.ImageByte);
+            string extension = GetImageByteType(user.ImageByte);
+             return (user.ImageByte, extension);
+
+
+        }
+      
+        private static string GetFileExtension(string base64String)
+        {
+            var data = base64String.Substring(0, 5);
+
+            switch (data.ToUpper())
+            {
+                case "IVBOR":
+                    return "image/png";
+                case "/9J/4":
+                    return "image/jpeg";
+                default:
+                    return string.Empty;
+            }
+        }
+        private string GetImageByteType(byte[] imageBytes)
+        {
+  
+            if (imageBytes.Length >= 2 && imageBytes[0] == 0xFF && imageBytes[1] == 0xD8)
+            {
+                return "image/jpeg";
+            }
+       
+            if (imageBytes.Length >= 8 &&
+                imageBytes[0] == 0x89 && imageBytes[1] == 0x50 &&
+                imageBytes[2] == 0x4E && imageBytes[3] == 0x47 &&
+                imageBytes[4] == 0x0D && imageBytes[5] == 0x0A &&
+                imageBytes[6] == 0x1A && imageBytes[7] == 0x0A)
+            {
+                return "image/png";
+            }
+            return null;
         }
 
     }

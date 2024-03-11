@@ -7,6 +7,7 @@ using iText.Kernel.Pdf;
 using System.Text;
 using System.IO;
 using System.Buffers.Text;
+using iText.StyledXmlParser.Node;
 
 namespace Rm.Api.Controllers
 {
@@ -118,11 +119,11 @@ namespace Rm.Api.Controllers
         [Route("UserImage")]
         public async Task<IActionResult> UploadImage(int userId, IFormFile image)
         {
-            if (Service.IsUserExistById(userId) == false)
+
+            if (await Service.UploadImage(userId, image) == false)
             {
                 return BadRequest();
             }
-            await Service.UploadImage(userId, image);
             return Ok();
         }
         [HttpGet]
@@ -134,58 +135,29 @@ namespace Rm.Api.Controllers
             return File(image.Item1, image.Item2);
         }
 
-        //stexic sax nayel
+
         [HttpPost]
-        [Route("hhhhhh")]
-        public IActionResult HHH(IFormFile a)
+        [Route("Image64")]
+        public async Task<IActionResult> CreateBase64(int userId, IFormFile image)
         {
-           string b = Service.UploadBase64(a);
-            return Ok(b);
-
-        }
-     
-        [HttpPost]
-        [Route("GetBase")]
-        public IActionResult BBB(string a )
-        {
-
-
-
-            byte[] array = Convert.FromBase64String(a);
-           
-            return File(array, GetFileExtension(a));
-
-
-        }
-        private static string GetFileExtension(string base64String)
-        {
-            var data = base64String.Substring(0, 5);
-
-            switch (data.ToUpper())
+            if (await Service.UploadImageBase64(userId, image) == false)
             {
-                case "IVBOR":
-                    return "png";
-                case "/9J/4":
-                    return "image/jpeg";
-                case "AAAAF":
-                    return "mp4";
-                case "JVBER":
-                    return "pdf";
-                case "AAABA":
-                    return "ico";
-                case "UMFYI":
-                    return "rar";
-                case "E1XYD":
-                    return "rtf";
-                case "U1PKC":
-                    return "txt";
-                case "MQOWM":
-                case "77U/M":
-                    return "srt";
-                default:
-                    return string.Empty;
-            }
+                return Conflict();
+            }  
+            return Ok();
+
         }
+
+        [HttpPost]
+        [Route("GetImage64")]
+        public IActionResult GetImageBase64(int userId)
+        {
+
+            var result = Service.GetImage64(userId);
+            return File(result.Item1, result.Item2);
+
+        }
+
 
     }
 }

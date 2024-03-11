@@ -21,8 +21,10 @@ namespace Rm.Model.Models
         public string Password { get; set; } = null!;
 
         public DateTime CreationDate { get; set; }
-
+        [JsonIgnore]
         public string? ImagePath { get; set; }
+        [JsonIgnore]
+        public byte[]? ImageByte {  get; set; }
 
         private short roleId;
 
