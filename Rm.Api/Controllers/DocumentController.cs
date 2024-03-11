@@ -60,7 +60,7 @@ namespace Rm.Api.Controllers
             return item;
         }
         [HttpGet]
-        [Route("Docs")]
+        [Route("DocsDownload")]
         public async Task<IActionResult> DownloadDocs(int docId)
         {
             if (Service.IsDocumentExist(docId))

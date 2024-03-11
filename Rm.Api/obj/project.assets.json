@@ -1095,6 +1095,22 @@
           }
         }
       },
+      "SixLabors.ImageSharp/3.1.3": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/SixLabors.ImageSharp.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/SixLabors.ImageSharp.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "build/SixLabors.ImageSharp.props": {}
+        }
+      },
       "Swashbuckle.AspNetCore/6.5.0": {
         "type": "package",
         "dependencies": {
@@ -2300,6 +2316,7 @@
         "framework": ".NETCoreApp,Version=v7.0",
         "dependencies": {
           "Microsoft.EntityFrameworkCore.SqlServer": "7.0.16",
+          "SixLabors.ImageSharp": "3.1.3",
           "Swashbuckle.AspNetCore.Annotations": "6.5.0",
           "itext7": "8.0.3",
           "itext7.bouncy-castle-adapter": "8.0.3",
@@ -2318,6 +2335,7 @@
         "dependencies": {
           "Microsoft.EntityFrameworkCore.SqlServer": "7.0.16",
           "Rm.DAL": "1.0.0",
+          "SixLabors.ImageSharp": "3.1.3",
           "itext7": "8.0.3",
           "itext7.bouncy-castle-adapter": "8.0.3",
           "itext7.pdfhtml": "5.0.3"
@@ -2338,6 +2356,7 @@
           "Microsoft.EntityFrameworkCore": "7.0.16",
           "Microsoft.EntityFrameworkCore.SqlServer": "7.0.16",
           "Models": "1.0.0",
+          "SixLabors.ImageSharp": "3.1.3",
           "itext7": "8.0.3",
           "itext7.bouncy-castle-adapter": "8.0.3",
           "itext7.pdfhtml": "5.0.3"
@@ -4031,6 +4050,22 @@
         "runtime.ubuntu.16.10-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
         "runtime.ubuntu.16.10-x64.runtime.native.system.security.cryptography.openssl.nuspec",
         "runtimes/ubuntu.16.10-x64/native/System.Security.Cryptography.Native.OpenSsl.so"
+      ]
+    },
+    "SixLabors.ImageSharp/3.1.3": {
+      "sha512": "wybtaqZQ1ZRZ4ZeU+9h+PaSeV14nyiGKIy7qRbDfSHzHq4ybqyOcjoifeaYbiKLO1u+PVxLBuy7MF/DMmwwbfg==",
+      "type": "package",
+      "path": "sixlabors.imagesharp/3.1.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE",
+        "build/SixLabors.ImageSharp.props",
+        "lib/net6.0/SixLabors.ImageSharp.dll",
+        "lib/net6.0/SixLabors.ImageSharp.xml",
+        "sixlabors.imagesharp.128.png",
+        "sixlabors.imagesharp.3.1.3.nupkg.sha512",
+        "sixlabors.imagesharp.nuspec"
       ]
     },
     "Swashbuckle.AspNetCore/6.5.0": {
@@ -7205,6 +7240,7 @@
       "Models >= 1.0.0",
       "Rm.BLL >= 1.0.0",
       "Rm.DAL >= 1.0.0",
+      "SixLabors.ImageSharp >= 3.1.3",
       "Swashbuckle.AspNetCore >= 6.5.0",
       "itext7 >= 8.0.3",
       "itext7.bouncy-castle-adapter >= 8.0.3",
@@ -7212,7 +7248,7 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\User\\.nuget\\packages\\": {}
+    "C:\\Users\\Arus\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
@@ -7220,11 +7256,11 @@
       "projectUniqueName": "D:\\Rem\\Rm.Api\\Rm.Api.csproj",
       "projectName": "Rm.Api",
       "projectPath": "D:\\Rem\\Rm.Api\\Rm.Api.csproj",
-      "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+      "packagesPath": "C:\\Users\\Arus\\.nuget\\packages\\",
       "outputPath": "D:\\Rem\\Rm.Api\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Arus\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -7232,7 +7268,6 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\sdk\\7.0.304\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -7275,6 +7310,10 @@
             "target": "Package",
             "version": "[7.0.16, )"
           },
+          "SixLabors.ImageSharp": {
+            "target": "Package",
+            "version": "[3.1.3, )"
+          },
           "Swashbuckle.AspNetCore": {
             "target": "Package",
             "version": "[6.5.0, )"
@@ -7311,7 +7350,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
       }
     }
   }

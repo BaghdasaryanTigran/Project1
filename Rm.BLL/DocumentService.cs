@@ -39,7 +39,7 @@ namespace Rm.BLL
             var result = mapper.Map<DocumentResponse>(doc);
             return result;
         }
-        public bool IsDocumentExist(int docId,bool withCarId = false, int carId = -1)
+        public bool IsDocumentExist(int docId, bool withCarId = false, int carId = -1)
         {
             var count = 0;
             if (withCarId = true)
@@ -50,7 +50,7 @@ namespace Rm.BLL
             {
                 count = Context.Set<Document>().Count(x => x.Id == docId);
             }
-            
+
 
             if (count > 0)
             {
@@ -80,14 +80,15 @@ namespace Rm.BLL
         }
         public async Task DownloadDocs(int docId)
         {
-             Document doc = Context.Documents.Include(x => x.Car).Include(x => x.Worker).FirstOrDefault(x => x.Id == docId);
-                if (doc == null)
-                {
-                    throw new ArgumentNullException();
-                }
-                string fileName = $"Doc{docId}.pdf";
-                string path = Path.Combine("C:\\Users\\User\\Downloads", fileName);
-                var html = $@"
+            Document doc = Context.Documents.Include(x => x.Car).Include(x => x.Worker).FirstOrDefault(x => x.Id == docId);
+            if (doc == null)
+            {
+                throw new ArgumentNullException();
+            }
+            string fileName = $"Doc{docId}.pdf";
+            string userPath = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + "\\Downloads";
+            string path = Path.Combine(userPath, fileName);
+            var html = $@"
               <html>
                 <body>
                      <h1>Repair Document : {docId}</h1>
@@ -99,14 +100,14 @@ namespace Rm.BLL
                 </body>
               </html>";
 
-                await Task.Run(() =>
+            await Task.Run(() =>
+            {
+                using (FileStream pdfFile = new FileStream(path, FileMode.Create))
                 {
-                    using (FileStream pdfFile = new FileStream(path, FileMode.Create))
-                    {
-                        HtmlConverter.ConvertToPdf(html, pdfFile);
-                    }
-                });
-           
+                    HtmlConverter.ConvertToPdf(html, pdfFile);
+                }
+            });
+
 
         }
     }

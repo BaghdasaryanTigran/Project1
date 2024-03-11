@@ -23,6 +23,7 @@ namespace Rm.Model.Models
         public DateTime CreationDate { get; set; }
 
         public string? ImagePath { get; set; }
+        public byte[]? ImageByte {  get; set; }
 
         private short roleId;
 

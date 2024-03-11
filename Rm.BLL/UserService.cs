@@ -1,10 +1,16 @@
 ﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Rm.BLL.Interfaces;
 using Rm.DAL.Context;
 using Rm.Model.Models;
 using System.Security.Cryptography;
 using System.Text;
+using System.IO.Compression;
+using SixLabors.ImageSharp.Formats.Jpeg;
+using SixLabors.ImageSharp;
+using SixLabors.ImageSharp.Processing;
+
 namespace Rm.BLL
 {
     public class UserService : IUserService
@@ -15,6 +21,7 @@ namespace Rm.BLL
             Context = context;
            
         }
+        
         public string HashPassword(string password )
         {
             using (SHA256 sha256 = SHA256.Create())
@@ -117,16 +124,65 @@ namespace Rm.BLL
             }
 
         }
-        public string UploadBase64(IFormFile file)
-        {
+       // public string UploadBase64(IFormFile file)
+        //{
             
 
-            using (MemoryStream memoryStream = new MemoryStream())
+            //using (MemoryStream memoryStream = new MemoryStream())
+            //{
+            //    file.CopyTo(memoryStream);
+            //    byte[] bytes = memoryStream.ToArray();
+               
+            //    string base64String = Convert.ToBase64String(bytes);
+                
+            //    var a = Directory.CreateDirectory(path);
+            //    File.WriteAllText(path, base64String);
+               
+            //        return base64String;
+            //}
+        //}
+       
+       
+        public (byte[],string) GetImage64(string base64)
+        {
+
+
+
+            byte[] array = Convert.FromBase64String(base64);
+            string extension = GetFileExtension(base64);
+            return (array, extension);
+
+
+        }
+        public byte[] ReduceImageSize(byte[] imageBytes, int jpegQuality)
+        {
+            using var inputStream = new MemoryStream(imageBytes);
+            using var outputStream = new MemoryStream();
+
+            using (Image image = Image.Load(inputStream))
             {
-                file.CopyTo(memoryStream);
-                byte[] bytes = memoryStream.ToArray();
-                string base64String = Convert.ToBase64String(bytes);
-                return base64String;
+                image.Mutate(x => x
+                    .Resize(image.Width, image.Height) // Resize to original size to reduce file size
+                    .BackgroundColor(Color.White) // Set background color if resizing changes aspect ratio
+                );
+
+                image.SaveAsJpeg(outputStream, new JpegEncoder { Quality = jpegQuality });
+            }
+
+            return outputStream.ToArray();
+        }
+        private static string GetFileExtension(string base64String)
+        {
+            var data = base64String.Substring(0, 5);
+
+            switch (data.ToUpper())
+            {
+                case "IVBOR":
+                    return "image/png";
+                case "/9J/4":
+                    return "image/jpeg";
+                default:
+                    return string.Empty;
             }
         }
 

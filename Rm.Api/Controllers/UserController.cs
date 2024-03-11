@@ -134,58 +134,27 @@ namespace Rm.Api.Controllers
             return File(image.Item1, image.Item2);
         }
 
-        //stexic sax nayel
+        
         [HttpPost]
-        [Route("hhhhhh")]
-        public IActionResult HHH(IFormFile a)
-        {
-           string b = Service.UploadBase64(a);
-            return Ok(b);
+        [Route("Image64")]
+      //  public IActionResult CreateBase64(IFormFile image)
+        //{
+           
+         //  string base64String = Service.UploadBase64(image);
+         //   return Ok(base64String);
 
-        }
+        //}
      
         [HttpPost]
-        [Route("GetBase")]
-        public IActionResult BBB(string a )
-        {
+        [Route("GetImage64")]
+        public IActionResult GetImageBase64(string string64 )
+        { 
 
-
-
-            byte[] array = Convert.FromBase64String(a);
-           
-            return File(array, GetFileExtension(a));
-
+          var result =   Service.GetImage64(string64);  
+            return File(result.Item1, result.Item2);    
 
         }
-        private static string GetFileExtension(string base64String)
-        {
-            var data = base64String.Substring(0, 5);
-
-            switch (data.ToUpper())
-            {
-                case "IVBOR":
-                    return "png";
-                case "/9J/4":
-                    return "image/jpeg";
-                case "AAAAF":
-                    return "mp4";
-                case "JVBER":
-                    return "pdf";
-                case "AAABA":
-                    return "ico";
-                case "UMFYI":
-                    return "rar";
-                case "E1XYD":
-                    return "rtf";
-                case "U1PKC":
-                    return "txt";
-                case "MQOWM":
-                case "77U/M":
-                    return "srt";
-                default:
-                    return string.Empty;
-            }
-        }
+      
 
     }
 }
