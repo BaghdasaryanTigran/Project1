@@ -134,7 +134,16 @@ namespace Rm.Api.Controllers
             
             return File(image.Item1, image.Item2);
         }
-
+        [HttpPost]
+        [Route("UpdateImage")]
+        public async Task<IActionResult> UpdateImage(int userId, IFormFile image)
+        {
+            if(await Service.UpdateImage(userId, image))
+            {
+                return Ok();
+            }
+            return Conflict();
+        }
 
         [HttpPost]
         [Route("Image64")]
@@ -157,7 +166,16 @@ namespace Rm.Api.Controllers
             return File(result.Item1, result.Item2);
 
         }
-
+        [HttpPost]
+        [Route("UpdateImage64")]
+        public async Task<IActionResult> UpdateImage64(int userId, IFormFile image)
+        {
+            if (await Service.UpdateImage64(userId, image))
+            {
+                return Ok();
+            }
+            return NotFound();
+        }
 
     }
 }

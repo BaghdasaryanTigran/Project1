@@ -14,7 +14,10 @@ namespace Rm.BLL.Interfaces
         public  string HashPassword(string password);
         public Task<bool> UploadImage(int userId, IFormFile image);
         public (byte[], string) GetUserImage(int userId);
+        public Task<bool> UpdateImage(int userId, IFormFile image);
         public Task<bool> UploadImageBase64(int userId, IFormFile file);
         public (byte[], string) GetImage64(int userId);
+        public Task<bool> UpdateImage64(int userId, IFormFile image);
+      
     }
 }
