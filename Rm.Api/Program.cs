@@ -34,7 +34,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
 );
 builder.Services.AddControllers();
 builder.Services.AddDbContext<RmContext>(x => x.UseSqlServer("Server=localhost;Database=Rem;Trusted_Connection=True;TrustServerCertificate=true;"));
-builder.Services.AddScoped<IBaseRepository<Document>, BaseRepository<Document>>();
+builder.Services.AddScoped<IDocumentRepository, DocumentRepository>();
 builder.Services.AddScoped<IBaseRepository<Car>, BaseRepository<Car>>();
 builder.Services.AddScoped<IBaseRepository<Worker>, BaseRepository<Worker>>();
 //builder.Services.AddScoped<IBaseRepository<User>, BaseRepository < User >> ();

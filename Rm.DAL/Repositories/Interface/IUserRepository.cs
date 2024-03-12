@@ -5,10 +5,10 @@ namespace Rm.DAL.Repositories.Interface
 {
     public interface IUserRepository
     {
-        public List<UserResponse> GetAll();
-        public UserResponse GetById(int id);
-        public User Create(User entity);
-        public User Update(User entity);
-        public void Delete(User entity);
+        public Task<List<UserResponse>> GetAll();
+        public Task<UserResponse> GetById(int id);
+        public Task<User> Create(User entity);
+        public Task<User> Update(User entity);
+        public Task Delete(User entity);
     }
 }

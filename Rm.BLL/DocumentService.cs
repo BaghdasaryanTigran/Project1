@@ -11,34 +11,15 @@ namespace Rm.BLL
     public class DocumentService : IDocumentService
     {
         private readonly RmContext Context;
-        private readonly MapperConfiguration Configuration = new MapperConfiguration(cfg =>
-         cfg.CreateMap<Document, DocumentResponse>()
-        );
+        
         public DocumentService(RmContext context)
         {
             Context = context;
         }
-        public DocumentResponse GetByCarNumber(string number)
-        {
-            var mapper = new Mapper(Configuration);
-            var doc = Context.Set<Document>().Include(x => x.Car).Include(x => x.Worker).FirstOrDefault(x => x.Car.Number == number);
-            var result = mapper.Map<DocumentResponse>(doc);
-            return result;
-        }
-        public DocumentResponse GetByWorkerNumber(string number)
-        {
-            var mapper = new Mapper(Configuration);
-            var doc = Context.Set<Document>().Include(x => x.Car).Include(x => x.Worker).FirstOrDefault(x => x.Worker.PhoneNumber == number);
-            var result = mapper.Map<DocumentResponse>(doc);
-            return result;
-        }
-        public DocumentResponse GetById(int id)
-        {
-            var mapper = new Mapper(Configuration);
-            var doc = Context.Set<Document>().Include(x => x.Car).Include(x => x.Worker).FirstOrDefault(x => x.Id == id);
-            var result = mapper.Map<DocumentResponse>(doc);
-            return result;
-        }
+        
+        
+
+        
         public bool IsDocumentExist(int docId, bool withCarId = false, int carId = -1)
         {
             var count = 0;

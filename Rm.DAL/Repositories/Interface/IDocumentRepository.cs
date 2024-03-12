@@ -6,10 +6,12 @@ namespace Rm.DAL.Repositories.Interface
 {
     public interface IDocumentRepository
     {
-        
-      
-        public void Create(Document doc);
-        public Tuple<Car, Worker> Update(User entity);
-        public void Delete();
+        public DocumentResponse GetById(int docId);
+        public DocumentResponse GetByCarNumber(string number);
+        public DocumentResponse GetByWorkerNumber(string number);
+        public List<DocumentResponse> GetAll();
+        public Task Create(Document doc);
+        public Task Update(int docId, int carId, int workerId);
+        public Task Delete(int docId);
     }
 }

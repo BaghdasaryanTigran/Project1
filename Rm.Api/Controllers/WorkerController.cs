@@ -22,43 +22,43 @@ namespace Rm.Api.Controllers
         }
 
         [HttpGet]
-        public Worker Get(int id)
+        public async Task<Worker> Get(int id)
         {
             if (Service.IsWorkerExistById(id))
             {
-                return Repository.GetById(id);
+                return await Repository.GetById(id);
             }
             return null;
         }
 
         [HttpPost]
-        public IActionResult Post(Worker worker)
+        public async Task<IActionResult> Create(Worker worker)
         {
             if (Service.IsWorkerExist(worker))
             {
                 return Conflict("Worker already exist");
             }
-            Repository.Create(worker);
+            await Repository.Create(worker);
             return Ok("Worker Added");
         }
 
         [HttpPut]
-        public IActionResult Put(Worker worker)
+        public async Task<IActionResult> Update(Worker worker)
         {
             if (Service.IsWorkerExist(worker))
             {
-                Repository.Update(worker);
+                await Repository.Update(worker);
                 return Ok("Updated");
             }
             return Conflict("Worker Not Found");
         }
         [Authorize]
         [HttpDelete]
-        public IActionResult Delete(Worker worker)
+        public async Task<IActionResult> Delete(Worker worker)
         {
             if (Service.IsWorkerExist(worker) && DocumentService.IsDocumentExistByWorkerId(worker.Id) == false)
             {
-                Repository.Delete(worker);
+                await Repository.Delete(worker);
                 return Ok("Deleted");
             }
             return Conflict("Worker not found or in progress");

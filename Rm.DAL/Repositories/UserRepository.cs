@@ -18,26 +18,26 @@ namespace Rm.DAL.Repositories
             Context = context;
         }
 
-        public User Create(User entity)
+        public async Task<User> Create(User entity)
         {
             Context.Set<User>().Add(entity);
-            Context.SaveChanges();
+            await Context.SaveChangesAsync();
             return entity;
             
         }
 
-        public void Delete(User entity)
+        public async Task Delete(User entity)
         {
             if (entity != null)
             {
                 User? toDelete = Context.Set<User>().FirstOrDefault(x => x.Id == entity.Id);
                 Context.Set<User>().Remove(toDelete);
-                Context.SaveChanges();
+                await Context.SaveChangesAsync();
             }
            
         }
 
-        public List<UserResponse> GetAll()
+        public async Task<List<UserResponse>> GetAll()
         {      
             
             var mapper = new Mapper(config);
@@ -46,20 +46,19 @@ namespace Rm.DAL.Repositories
             return responseList;
         }
 
-        public UserResponse GetById(int id)
+        public async Task<UserResponse> GetById(int id)
         {
             User? model = Context.Set<User>().FirstOrDefault(x => x.Id == id);
            // UserResponse us = new UserResponse(model);
             var mapper = new Mapper(config);
             UserResponse us = mapper.Map<UserResponse>(model);
-            Context.SaveChanges();
             return us;
         }
 
-        public User Update(User entity)
+        public async Task<User> Update(User entity)
         {
             Context.Update(entity);
-            Context.SaveChanges();
+            await Context.SaveChangesAsync();
             return entity;
         }
     }

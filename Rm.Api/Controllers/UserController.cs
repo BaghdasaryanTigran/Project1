@@ -8,6 +8,7 @@ using System.Text;
 using System.IO;
 using System.Buffers.Text;
 using iText.StyledXmlParser.Node;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Rm.Api.Controllers
 {
@@ -50,26 +51,26 @@ namespace Rm.Api.Controllers
 
         [HttpGet]
         [Route("GetAll")]
-        public IEnumerable<UserResponse> GetAll()
+        public async Task<IEnumerable<UserResponse>> GetAll()
         {
-            return Repository.GetAll();
+            return await Repository.GetAll();
         }
 
 
         [HttpGet]
         [Route("GetById")]
-        public UserResponse Get(int id)
+        public async Task<UserResponse> Get(int id)
         {
             if (Service.IsUserExistById(id))
             {
-                return Repository.GetById(id);
+                return await Repository.GetById(id);
             }
             return null;
         }
 
 
         [HttpPost]
-        public IActionResult Create(User user)
+        public async Task< IActionResult> Create(User user)
         {
             if (Service.IsUserExist(user))
             {
@@ -87,34 +88,35 @@ namespace Rm.Api.Controllers
                 RoleId = user.RoleId,
 
             };
-            Repository.Create(us);
+            await Repository.Create(us);
             return Ok("User added");
         }
 
 
         [HttpPut]
-        public IActionResult Update(int userIdForUpdate, User userUpdate)
+        public async Task<IActionResult> Update(int userIdForUpdate, User userUpdate)
         {
 
             if (Service.IsUserExistById(userIdForUpdate) && Service.IsUserLoginExist(userUpdate) == false)
             {
-                Repository.Update(userUpdate);
+                await Repository.Update(userUpdate);
                 return Ok("User Updated");
             }
             return Conflict("User Not Found or Already Exist");
         }
 
-
+        [Authorize]
         [HttpDelete]
-        public IActionResult Delete(User user)
+        public async Task<IActionResult> Delete(User user)
         {
             if (Service.IsUserExist(user, true))
             {
-                Repository.Delete(user);
+                 await Repository.Delete(user);
                 return Ok("Delete Successful");
             }
             return Conflict("User does not Exist");
         }
+
         [HttpPost]
         [Route("UserImage")]
         public async Task<IActionResult> UploadImage(int userId, IFormFile image)
@@ -126,6 +128,7 @@ namespace Rm.Api.Controllers
             }
             return Ok();
         }
+
         [HttpGet]
         [Route("GetImage")]
         public IActionResult GetUserImage(int userId)
@@ -134,6 +137,7 @@ namespace Rm.Api.Controllers
             
             return File(image.Item1, image.Item2);
         }
+
         [HttpPost]
         [Route("UpdateImage")]
         public async Task<IActionResult> UpdateImage(int userId, IFormFile image)
@@ -166,6 +170,7 @@ namespace Rm.Api.Controllers
             return File(result.Item1, result.Item2);
 
         }
+
         [HttpPost]
         [Route("UpdateImage64")]
         public async Task<IActionResult> UpdateImage64(int userId, IFormFile image)

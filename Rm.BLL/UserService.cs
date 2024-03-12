@@ -200,7 +200,7 @@ namespace Rm.BLL
                 case ".png":
                     return "image/png";
                 default:
-                    return "application/octet-stream";
+                    return null;
             }
 
         }

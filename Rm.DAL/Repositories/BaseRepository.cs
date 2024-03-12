@@ -12,19 +12,19 @@ namespace Rm.DAL
         {
             Context = context;
         }   
-        public T Create(T entity)
+        public async Task<T> Create(T entity)
         {
             Context.Set<T>().Add(entity);
-            Context.SaveChanges();
+            await Context.SaveChangesAsync();
             return entity;
         }
 
-        public void Delete(T entity)
+        public async Task Delete(T entity)
         {
             T toDelete = Context.Set<T>().FirstOrDefault(x => x.Id == entity.Id);
 
             Context.Set<T>().Remove(toDelete);
-            Context.SaveChanges();
+            await Context.SaveChangesAsync();
         }
 
         public List<T> GetAll()
@@ -32,17 +32,17 @@ namespace Rm.DAL
             return Context.Set<T>().ToList();
         }
 
-        public T GetById(int id)
+        public async Task<T> GetById(int id)
         {
             T? model = Context.Set<T>().FirstOrDefault(x => x.Id == id);
-            Context.SaveChanges();
+            
             return model;
         }
 
-        public T Update(T entity)
+        public async Task<T> Update(T entity)
         {
             Context.Update(entity);
-            Context.SaveChanges();
+            await Context.SaveChangesAsync();
             return entity;
         }
     }
