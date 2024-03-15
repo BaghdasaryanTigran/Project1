@@ -7247,19 +7247,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Arus\\.nuget\\packages\\": {}
+    "C:\\Users\\User\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Rem\\Rm.Api\\Rm.Api.csproj",
+      "projectUniqueName": "D:\\A1\\Rm.Api\\Rm.Api.csproj",
       "projectName": "Rm.Api",
-      "projectPath": "D:\\Rem\\Rm.Api\\Rm.Api.csproj",
-      "packagesPath": "C:\\Users\\Arus\\.nuget\\packages\\",
-      "outputPath": "D:\\Rem\\Rm.Api\\obj\\",
+      "projectPath": "D:\\A1\\Rm.Api\\Rm.Api.csproj",
+      "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+      "outputPath": "D:\\A1\\Rm.Api\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Arus\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -7267,20 +7267,21 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\sdk\\7.0.304\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "D:\\Rem\\Rm.BLL\\Rm.BLL.csproj": {
-              "projectPath": "D:\\Rem\\Rm.BLL\\Rm.BLL.csproj"
+            "D:\\A1\\Rm.BLL\\Rm.BLL.csproj": {
+              "projectPath": "D:\\A1\\Rm.BLL\\Rm.BLL.csproj"
             },
-            "D:\\Rem\\Rm.DAL\\Rm.DAL.csproj": {
-              "projectPath": "D:\\Rem\\Rm.DAL\\Rm.DAL.csproj"
+            "D:\\A1\\Rm.DAL\\Rm.DAL.csproj": {
+              "projectPath": "D:\\A1\\Rm.DAL\\Rm.DAL.csproj"
             },
-            "D:\\Rem\\Rm.Models\\Models.csproj": {
-              "projectPath": "D:\\Rem\\Rm.Models\\Models.csproj"
+            "D:\\A1\\Rm.Models\\Models.csproj": {
+              "projectPath": "D:\\A1\\Rm.Models\\Models.csproj"
             }
           }
         }
@@ -7349,7 +7350,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
       }
     }
   }

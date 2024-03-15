@@ -32,6 +32,10 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
     };
 }
 );
+//builder.Services.AddAuthorization( options => 
+//{
+//    options.AddPolicy("Role", p => p.RequireClaim("1"));
+//});
 builder.Services.AddControllers();
 builder.Services.AddDbContext<RmContext>(x => x.UseSqlServer("Server=localhost;Database=Rem;Trusted_Connection=True;TrustServerCertificate=true;"));
 builder.Services.AddScoped<IDocumentRepository, DocumentRepository>();

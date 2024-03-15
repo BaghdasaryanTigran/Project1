@@ -105,18 +105,7 @@ namespace Rm.Api.Controllers
             return Conflict("User Not Found or Already Exist");
         }
 
-        [Authorize]
-        [HttpDelete]
-        public async Task<IActionResult> Delete(User user)
-        {
-            if (Service.IsUserExist(user, true))
-            {
-                 await Repository.Delete(user);
-                return Ok("Delete Successful");
-            }
-            return Conflict("User does not Exist");
-        }
-
+      
         [HttpPost]
         [Route("UserImage")]
         public async Task<IActionResult> UploadImage(int userId, IFormFile image)
@@ -182,5 +171,16 @@ namespace Rm.Api.Controllers
             return NotFound();
         }
 
+        [Authorize(Roles = "Admin")]
+        [HttpDelete]
+        public async Task<IActionResult> Delete(User user)
+        {
+            if (Service.IsUserExist(user, true))
+            {
+                await Repository.Delete(user);
+                return Ok("Delete Successful");
+            }
+            return Conflict("User does not Exist");
+        }
     }
 }

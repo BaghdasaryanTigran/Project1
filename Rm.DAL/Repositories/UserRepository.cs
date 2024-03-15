@@ -30,7 +30,7 @@ namespace Rm.DAL.Repositories
         {
             if (entity != null)
             {
-                User? toDelete = Context.Set<User>().FirstOrDefault(x => x.Id == entity.Id);
+                var toDelete = Context.Set<User>().FirstOrDefault(x => x.Login == entity.Login );
                 Context.Set<User>().Remove(toDelete);
                 await Context.SaveChangesAsync();
             }

@@ -54,3 +54,17 @@ D:\review\Rm.Models\obj\Debug\net7.0\refint\Models.dll
 D:\review\Rm.Models\obj\Debug\net7.0\Models.pdb
 D:\review\Rm.Models\obj\Debug\net7.0\Models.genruntimeconfig.cache
 D:\review\Rm.Models\obj\Debug\net7.0\ref\Models.dll
+D:\A1\Rm.Models\bin\Debug\net7.0\Models.deps.json
+D:\A1\Rm.Models\bin\Debug\net7.0\Models.runtimeconfig.json
+D:\A1\Rm.Models\bin\Debug\net7.0\Models.dll
+D:\A1\Rm.Models\bin\Debug\net7.0\Models.pdb
+D:\A1\Rm.Models\obj\Debug\net7.0\Models.csproj.AssemblyReference.cache
+D:\A1\Rm.Models\obj\Debug\net7.0\Models.GeneratedMSBuildEditorConfig.editorconfig
+D:\A1\Rm.Models\obj\Debug\net7.0\Models.AssemblyInfoInputs.cache
+D:\A1\Rm.Models\obj\Debug\net7.0\Models.AssemblyInfo.cs
+D:\A1\Rm.Models\obj\Debug\net7.0\Models.csproj.CoreCompileInputs.cache
+D:\A1\Rm.Models\obj\Debug\net7.0\Models.dll
+D:\A1\Rm.Models\obj\Debug\net7.0\refint\Models.dll
+D:\A1\Rm.Models\obj\Debug\net7.0\Models.pdb
+D:\A1\Rm.Models\obj\Debug\net7.0\Models.genruntimeconfig.cache
+D:\A1\Rm.Models\obj\Debug\net7.0\ref\Models.dll

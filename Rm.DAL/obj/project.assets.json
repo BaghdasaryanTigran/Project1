@@ -6897,19 +6897,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Arus\\.nuget\\packages\\": {}
+    "C:\\Users\\User\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Rem\\Rm.DAL\\Rm.DAL.csproj",
+      "projectUniqueName": "D:\\A1\\Rm.DAL\\Rm.DAL.csproj",
       "projectName": "Rm.DAL",
-      "projectPath": "D:\\Rem\\Rm.DAL\\Rm.DAL.csproj",
-      "packagesPath": "C:\\Users\\Arus\\.nuget\\packages\\",
-      "outputPath": "D:\\Rem\\Rm.DAL\\obj\\",
+      "projectPath": "D:\\A1\\Rm.DAL\\Rm.DAL.csproj",
+      "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+      "outputPath": "D:\\A1\\Rm.DAL\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Arus\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -6923,8 +6923,8 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "D:\\Rem\\Rm.Models\\Models.csproj": {
-              "projectPath": "D:\\Rem\\Rm.Models\\Models.csproj"
+            "D:\\A1\\Rm.Models\\Models.csproj": {
+              "projectPath": "D:\\A1\\Rm.Models\\Models.csproj"
             }
           }
         }
@@ -7000,7 +7000,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
       }
     }
   }
