@@ -52,7 +52,7 @@ namespace Rm.Api.Controllers
             return Conflict("Car Not Found");
         }
 
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [HttpDelete]
         public async Task<IActionResult> Delete(Car car)
         {

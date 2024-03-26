@@ -80,7 +80,7 @@ namespace Rm.Api.Controllers
             
         }
 
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [HttpDelete]
         public async Task<IActionResult> Delete(int docId)
         {

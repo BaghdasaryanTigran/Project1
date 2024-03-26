@@ -52,7 +52,7 @@ namespace Rm.Api.Controllers
             }
             return Conflict("Worker Not Found");
         }
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [HttpDelete]
         public async Task<IActionResult> Delete(Worker worker)
         {
